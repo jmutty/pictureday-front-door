@@ -14,6 +14,10 @@ var base='';
 var m=/^\/pictureday-front-door(\/|$)/.exec(location.pathname);
 if(m){base='/pictureday-front-door'}
 var path=location.pathname.slice(base.length)||'/';
+/* GotPhoto used to 301 the root of pictureday.207photo.com to /login, and browsers cache that
+   permanent redirect. A bare /login (no code in the path) is therefore a parent who typed the
+   site address, so show the front door instead of forwarding. */
+if(/^\/login\/?$/.test(path)){location.replace(base+'/'+location.hash);return}
 location.replace(GALLERY+path+location.search+location.hash)
 })();
 </script>
