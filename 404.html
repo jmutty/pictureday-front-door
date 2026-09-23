@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Opening your gallery… · 207 Photo</title>
+<meta name="robots" content="noindex">
+<script>
+/* Anything on pictureday.207photo.com that is not the front door is an old GotPhoto link
+   (order status, invoice, gallery, download). Send it to the gallery host with the path intact. */
+(function(){
+var GALLERY='https://gallery.207photo.com';
+var base='';
+var m=/^\/pictureday-front-door(\/|$)/.exec(location.pathname);
+if(m){base='/pictureday-front-door'}
+var path=location.pathname.slice(base.length)||'/';
+location.replace(GALLERY+path+location.search+location.hash)
+})();
+</script>
+<style>body{font-family:Archivo,-apple-system,Helvetica,Arial,sans-serif;background:#FFF9EE;color:#252720;display:grid;place-items:center;height:100vh;margin:0;text-align:center}a{color:#E16239}</style>
+</head>
+<body>
+<div><p>Opening your gallery…</p><p><a id="l" href="https://gallery.207photo.com">Continue to the gallery</a></p></div>
+<script>document.getElementById('l').href='https://gallery.207photo.com'+location.pathname+location.search+location.hash</script>
+</body>
+</html>
