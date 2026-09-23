@@ -185,7 +185,7 @@ function pick(id){job=(JOBS||[]).filter(function(j){return j.gotphoto_job_id===i
 
 /* ---- step 3: the one thing to do ---- */
 function renderState(){
-var s=$('s3'),org=job.org,pd=job.picture_day,h='';
+var s=$('s3'),org=job.kind==='school'?job.org:job.name.replace(/\s*\|\s*(19|20)\d{2}(\s*-\s*\d{2,4})?\s*$/,'').replace(/\s*\|\s*/g,' · '),pd=job.picture_day,h='';
 crumbs([{t:'Start',go:'s1'},{t:kind==='school'?'School pictures':'Sports pictures',go:'s2'},{t:org}]);
 $('title').textContent=org;
 var dl=job.reg_deadline,open=job.kind==='school'&&dl&&daysUntil(dl)>0&&job.school_code;
