@@ -267,10 +267,10 @@ var m=document.createElement('input');m.type='hidden';m.name='_method';m.value='
 var c=document.createElement('input');c.type='hidden';c.name='data[GuestAccess][code][]';c.value=code;f.appendChild(c);
 document.body.appendChild(f);f.submit()}
 
-/* ---- deep links: #job=<id> ---- */
-var mm=/[#&]job=([^&\/]+)/.exec(location.hash||'');
-if(mm){loadJobs().then(function(){var j=(JOBS||[]).filter(function(x){return x.gotphoto_job_id===mm[1]})[0];if(j){kind=j.kind;job=j;renderState()}})}
-else{loadJobs()}
+/* ---- deep links: #job=<id> (also when the hash changes) ---- */
+function route(){var mm=/[#&]job=([^&\/]+)/.exec(location.hash||'');if(!mm){return loadJobs()}
+return loadJobs().then(function(){var j=(JOBS||[]).filter(function(x){return x.gotphoto_job_id===mm[1]})[0];if(j&&j!==job){kind=j.kind;job=j;renderState()}})}
+window.addEventListener('hashchange',route);route();
 })();
 </script>
 </body>
