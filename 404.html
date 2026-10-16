@@ -17,6 +17,8 @@ var path=location.pathname.slice(base.length)||'/';
 /* GotPhoto used to 301 the root of pictureday.207photo.com to /login, and browsers cache that
    permanent redirect. A bare /login (no code in the path) is therefore a parent who typed the
    site address, so show the front door instead of forwarding. */
+/* pictureday.207photo.com/retake: printed retake copy points here (2026-10-16) */
+if(/^\/retake\/?$/i.test(path)){location.replace('https://207photo.com/find-my-photos/#retake');return}
 if(/^\/login\/?$/.test(path)){location.replace('https://207photo.com/find-my-photos/'+location.hash);return}
 location.replace(GALLERY+path+location.search+location.hash)
 })();
